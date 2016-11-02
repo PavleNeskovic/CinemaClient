@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<h1>{{hello}}</h1>
+
+<ul>
+  <li *ngFor="let movie of movies">{{movie.title}}</li>
+</ul>
+
+<label>New movie name: <input #newMovieName /></label>
+<button (click)="addMovie(newMovieName.value); newMovieName.value=''">Add Movie</button>
