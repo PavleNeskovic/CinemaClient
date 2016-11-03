@@ -1,8 +1,9 @@
 <h1>{{hello}}</h1>
 
-<ul>
-  <li *ngFor="let movie of movies">{{movie.title}}</li>
-</ul>
+<nav>
+      <a routerLink="/movies" routerLinkActive="active">Movies</a>
+      <a routerLink="/theaters" routerLinkActive="active">Theaters</a>
+    </nav>
+    <router-outlet></router-outlet>
 
-<label>New movie name: <input #newMovieName /></label>
-<button (click)="addMovie(newMovieName.value); newMovieName.value=''">Add Movie</button>
+<p><i>by {{me}}</i></p>

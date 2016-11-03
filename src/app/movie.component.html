@@ -1,0 +1,11 @@
+<label>New movie name: <input #newMovieName /></label>
+<button (click)="addMovie(newMovieName.value); newMovieName.value=''">Add Movie</button>
+
+<ul>
+  <li *ngFor="let movie of movies">
+  {{movie.title}}
+  <button (click)="changeShow();">Buy</button>
+  <my-film [movie]="movie.title"></my-film>
+  </li>
+</ul>
+

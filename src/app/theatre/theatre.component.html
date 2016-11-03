@@ -1,0 +1,10 @@
+
+<label>New theatre name: <input #newTheatreName /></label>
+<button (click)="addTheatre(newTheatreName.value); newTheatreName.value=''">Add Theatre</button>
+
+<ul>
+  <li *ngFor="let theatre of theaters">
+  {{theatre.name}}
+  <!-- <button (click)="writeID(theatre.id)">Buy</button> -->
+  </li>
+</ul>
