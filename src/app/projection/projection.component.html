@@ -1,0 +1,13 @@
+
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Theatre</th> 
+    <th>Tickets</th> 
+  </tr>
+  <tr *ngFor="let projection of projections">
+    <td>{{projection.time}}</td>
+    <td>{{projection.theatre.name}}</td>
+    <td><button>Get your tickets!</button></td>
+  </tr>
+</table>

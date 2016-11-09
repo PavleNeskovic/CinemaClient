@@ -11,16 +11,20 @@ import { FilmService } from '../film/film.service';
 export class FilmComponent implements OnInit {
   errorMessage: string;
   @Input() movie: Movie;
+  
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+  	
   }
+  //getMovie ne radi sa dobrom promenljivom movie
   getMovie(title: string) {
+  	console.log("getMovie("+title+") component:");
   	this.movieService.getMovie(title).subscribe(
                        movie => this.movie = movie,
                        error =>  this.errorMessage = <any>error);
-  	console.log("movie:");
+  	console.log("getMovie("+title+") component: Done! result:");
   	console.log(this.movie);
   }
 

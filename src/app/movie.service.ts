@@ -24,18 +24,19 @@ export class MovieService {
                     .catch(this.handleError);
   }
 
-  getMovie(title: string) {
-    console.log(this.url+'movie/'+title);
+  getMovie(title: string): Observable<Movie> {
+    console.log("getMovie("+title+") service:");
+    console.log("Url: " + this.url+'movie/'+title);
     return this.http.get(this.url+'movie/'+title)
                     .map(this.extractMovie)
                     .catch(this.handleError);
   }
 
 
-  addMovie (title: string): Observable<Movie> {
+  addMovie (title: string, description: string, imageUrl: string): Observable<Movie> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.url+'new', { title }, options)
+    return this.http.post(this.url+'new', { title, description, imageUrl }, options)
                     .map(this.extractMovie)
                     .catch(this.handleError);
   }
@@ -51,9 +52,10 @@ private extractMovie(res: Response) {
 
     // check if empty, before call json
     if (res.text()) {
+      console.log("extractMovie res has value");
         body = res.json();
     }
-    console.log("Body:");
+    console.log("extractMovie body:");
     console.log(body);
     return body || {};
   }

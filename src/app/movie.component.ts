@@ -15,6 +15,7 @@ import  {MovieService} from "./movie.service"
 export class MovieComponent implements OnInit {
   errorMessage: string;
   movies: Movie[];
+  movieArray: boolean[];
   constructor ( private route: ActivatedRoute,
                 private router: Router,
                 private movieService: MovieService) {}
@@ -30,15 +31,22 @@ export class MovieComponent implements OnInit {
                      .subscribe(
                        movies => this.movies = movies,
                        error =>  this.errorMessage = <any>error);
+
   }
-  addMovie (title: string) {
+  addMovie (title: string, description: string, imageUrl: string) {
     if (!title) { return; }
-    this.movieService.addMovie(title)
+    this.movieService.addMovie(title, description, imageUrl)
                      .subscribe(
                        movie  => this.movies.push(movie),
                        error =>  this.errorMessage = <any>error);
   }
-  changeShow(){
-    
+  isClicked(movie: Movie): Movie{
+    if(movie.isClicked === true){
+      movie.isClicked = false;
+    } else {
+      movie.isClicked = true;
+    }
+    console.log("Clicked " + movie.id + " " + movie.isClicked);
+    return movie;
   }
 }
