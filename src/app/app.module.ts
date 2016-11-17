@@ -13,7 +13,8 @@ import { TheatreService } from './theatre/theatre.service';
 import { FilmService } from './film/film.service';
 import { MovieService } from "./movie.service";
 import { ProjectionService } from './projection/projection.service';
-import { ExtractDataService } from './extract-data.service'
+import { ExtractDataService } from './extract-data.service';
+import { SeatsComponent } from './seats/seats.component'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ExtractDataService } from './extract-data.service'
     MovieComponent,
     FilmComponent,
     TheatreComponent,
-    ProjectionComponent
+    ProjectionComponent,
+    SeatsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { ExtractDataService } from './extract-data.service'
       { path: 'movies', component: MovieComponent },
       { path: 'movie', component: FilmComponent },
       { path: 'projections', component: ProjectionComponent },
-      { path: 'theaters', component: TheatreComponent }
+      { path: 'theaters', component: TheatreComponent },
+      { path: 'seats/:id', component: SeatsComponent }
     ])
   ],
   providers: [

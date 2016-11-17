@@ -8,6 +8,6 @@
   <tr *ngFor="let projection of projections">
     <td>{{projection.time}}</td>
     <td>{{projection.theatre.name}}</td>
-    <td><button>Get your tickets!</button></td>
+    <td><button (click)="onSelect(projection)">Get your tickets!</button></td>
   </tr>
 </table>
