@@ -4,10 +4,13 @@ import { Headers, RequestOptions } from '@angular/http';
 import { Theatre } from './theatre'
 import { Observable }     from 'rxjs';
 
+
 @Injectable()
 export class TheatreService {
+
 private url = 'http://localhost:8080/';  // URL to web API
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+              }
 
  getTheaters (): Observable<Theatre[]> {
     return this.http.get(this.url+'theatre/all')

@@ -24,10 +24,18 @@ export class ProjectionService {
                     .catch(this.extractDataService.handleError);
   }
 
-//Finish implementation, change url and add new path in spring for searchbyid
   getProjectionForId (projectionId: string): Observable<Projection> {
     return this.http.get(this.url + "byid/"+projectionId)
                     .map(this.extractDataService.extractData)
+                    .catch(this.extractDataService.handleError);
+  }
+
+  setSeatsCreated(id: number): Observable<Projection>{
+  	let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    console.log({ id });
+    return this.http.put(this.url+'setSeatCreated', { id }, options)
+					.map(this.extractDataService.extractData)
                     .catch(this.extractDataService.handleError);
   }
 

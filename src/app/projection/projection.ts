@@ -6,5 +6,6 @@ export class Projection {
     public movie: Movie,
     public theatre: Theatre,
     public time: string,
+    public seatsCreated: boolean,
     public isClicked: boolean = false) { }
 }
