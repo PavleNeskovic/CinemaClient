@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 
 import { ProjectionComponent } from './projection/projection.component';
 import { MovieComponent } from "./movie.component"
@@ -38,7 +38,10 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule, 
     JsonpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig,{
+      provider: AuthProviders.Facebook,
+      method: AuthMethods.Popup
+    }),
     RouterModule.forRoot([
       { path: 'movies', component: MovieComponent },
       { path: 'movie', component: FilmComponent },

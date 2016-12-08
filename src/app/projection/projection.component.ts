@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Movie } from '../movie';
 import { Projection } from './projection';
 import { ProjectionService } from './projection.service';
@@ -19,13 +19,26 @@ errorMessage: string;
 selectedMovie: string;
 private af: AngularFire;
 items;
+user;
 
   constructor(
     private afc: AngularFire,
     private projectionService: ProjectionService,  
     private route: ActivatedRoute,
     private router: Router) { 
+    // this.afc.auth.subscribe(user => {
+    //   if(user) {
+    //     // user logged in
+    //     this.user = user;
+    //     console.log(this.user);
+    //   }
+    //   else {
+    //     // user not logged in
+    //     this.user = {};
+    //   }
+    // });
       this.af = afc;
+      this.user = afc.auth;
       //console.log(this.items.hasChild());
     }
 
@@ -63,7 +76,18 @@ items;
   }
 
   addItem(newName: string) {
-    this.items.push({ text: newName });
+    this.items.push({ userId: "null" });
   }
+
+  login() {
+  this.af.auth.login({
+    provider: AuthProviders.Facebook,
+    method: AuthMethods.Redirect
+  });
+}
+ 
+logout() {
+  this.af.auth.logout();
+}
 
 }

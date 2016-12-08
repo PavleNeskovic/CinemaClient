@@ -1,16 +1,22 @@
 <div *ngIf="projection">
-	<p>{{projection.time}}</p>
-	<p>{{projection.movie.title}}</p>
-	<p>{{projection.theatre.name}}</p>
+	<h1>{{projection.movie.title}}</h1>
+	<h3>Vreme projekcije: {{projection.time}}</h3>
+	<p>Sala: {{projection.theatre.name}}</p>
 	 <ul>
-	    <li *ngFor="let item of items | async">
-	      <input type="text" #updatetext [value]="item.text" />
-	      <button (click)="updateItem(item.$key, updatetext.value)">Update</button>
-	      <button (click)="deleteItem(item.$key)">Delete</button>
-	    </li>
-	  </ul>
-	  <input type="text" #newitem />
-	  <button (click)="addItem(newitem.value)">Add</button>
-	  <button (click)="deleteEverything()">Delete All</button>
+	 <button md-raised-button (click)="login()">
+ Use My Facebook Account
+</button>
+<button md-raised-button (click)="logout()">
+  Logout
+</button>
+<div *ngIf="af.auth | async">
+<img style="width:30px;height:30px;float: left;" src="{{(af.auth | async).auth.photoURL}}"/>
+<p>&nbsp;&nbsp;&nbsp;Logged in as {{ (af.auth | async).auth.displayName }}</p>
+	<div id="theatre"> 
+	      <button *ngFor="let item of items | async" class="seat" #seat (click)="updateItem(item, $event, this)">
+	      </button>
+	</div>
 </div>
-<p>seats works!</p>
+
+<!-- [ngClass]="{'selectedSeat': isSeatSelected }" -->
+<!-- [style.background-color]="getStyle()" -->
