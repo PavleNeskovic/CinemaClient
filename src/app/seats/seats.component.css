@@ -15,7 +15,7 @@
 
 }
 
-.selectedSeat{
+#selectedSeat{
 	display:inline-block;
 	background: white;
     width: 3em;

@@ -13,7 +13,7 @@
 <img style="width:30px;height:30px;float: left;" src="{{(af.auth | async).auth.photoURL}}"/>
 <p>&nbsp;&nbsp;&nbsp;Logged in as {{ (af.auth | async).auth.displayName }}</p>
 	<div id="theatre"> 
-	      <button *ngFor="let item of items | async" class="seat" #seat (click)="updateItem(item, $event, this)">
+	      <button *ngFor="let item of items | async" [attr.id]="item.$key" class="seat" #seat (click)="updateItem(item, $event, this)">
 	      </button>
 	</div>
 </div>

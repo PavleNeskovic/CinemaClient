@@ -57,35 +57,30 @@ isSeatSelected = false;
 
    
   updateItem(item, element, that) {
-    console.log(item);
     console.log(element);
-    console.log(that);
-    //element.target.style.backgroundColor = "green";
     if(this.isUIDNull(item)){
-      this.showStyle = 1;
-      this.items.update(item.$key, { userId: this.user.uid });
+      document.getElementById(item.$key).style.color = "yellow";
+      //element.target.setAttribute("style", "background-color: yellow;");
+      this.updateSeat(item);
     } else if(this.isItMe(item)) {
-      this.showStyle = 2;
-      this.items.update(item.$key, { userId: "null" });
+      this.updateSeat(item);
+      document.getElementById(item.$key).style.color = "blue";
     } else {
-      this.showStyle = 3;
+      document.getElementById(item.$key).style.color = "green";
       console.log("disabled");
     }
-    //  element.target.style.backgroundColor = "green";
-    //   console.log("After change "+element.target.style.backgroundColor);
-     // if(!this.isSomeoneElse(item)) {
-     //   if(this.isItMe(item)) {
-     //     this.items.update(item.$key, { userId: "null" });
-     //   } else 
-     //   if(this.isUIDNull(item)){
-     //     this.items.update(item.$key, { userId: this.user.uid });
-     //   } else {
-     //     console.log("seats component update method has errors");
-     //   }
-     // } else {
-     //   console.log("Its disabled");
-     // }
+    //element.target.style.backgroundColor = "green";
   }
+
+
+  updateSeat(item){
+    if(this.isUIDNull(item)) { 
+       this.items.update(item.$key, { userId: this.user.uid });
+    } else {
+      this.items.update(item.$key, { userId: "null" });
+    }
+  }
+
   isSomeoneElse(item){
      if(item.userId === this.user.uid) {
        return true;
