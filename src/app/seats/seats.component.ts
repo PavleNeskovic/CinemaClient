@@ -59,14 +59,14 @@ isSeatSelected = false;
   updateItem(item, element, that) {
     console.log(element);
     if(this.isUIDNull(item)){
-      document.getElementById(item.$key).style.color = "yellow";
+      document.getElementById(item.$key).style.backgroundColor = "lightblue";
       //element.target.setAttribute("style", "background-color: yellow;");
-      this.updateSeat(item);
+      this.items.update(item.$key, { userId: this.user.uid });
     } else if(this.isItMe(item)) {
-      this.updateSeat(item);
-      document.getElementById(item.$key).style.color = "blue";
+      this.items.update(item.$key, { userId: "null" });
+      document.getElementById(item.$key).style.backgroundColor = "lightblue";
     } else {
-      document.getElementById(item.$key).style.color = "green";
+      document.getElementById(item.$key).style.backgroundColor = "lightblue";
       console.log("disabled");
     }
     //element.target.style.backgroundColor = "green";
@@ -82,9 +82,11 @@ isSeatSelected = false;
   }
 
   isSomeoneElse(item){
-     if(item.userId === this.user.uid) {
-       return true;
-     } else {
+    //debugger;
+     if(!this.isItMe(item)) {
+       if(!this.isUIDNull(item)){
+         return true;
+       }
     return false;
   }
   }

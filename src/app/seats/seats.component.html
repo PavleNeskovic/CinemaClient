@@ -14,6 +14,11 @@
 <p>&nbsp;&nbsp;&nbsp;Logged in as {{ (af.auth | async).auth.displayName }}</p>
 	<div id="theatre"> 
 	      <button *ngFor="let item of items | async" [attr.id]="item.$key" class="seat" #seat (click)="updateItem(item, $event, this)">
+	      <div *ngIf="!isSomeoneElse(item)">
+	      	<div *ngIf="isUIDNull(item)">N</div>
+	      	<div *ngIf="!isUIDNull(item)">M</div>
+	      </div>
+	      <div *ngIf="isSomeoneElse(item)">F</div>
 	      </button>
 	</div>
 </div>
