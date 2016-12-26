@@ -20,7 +20,6 @@ selectedMovie: string;
 private af: AngularFire;
 items;
 user;
-
   constructor(
     private afc: AngularFire,
     private projectionService: ProjectionService,  

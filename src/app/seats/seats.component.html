@@ -13,13 +13,13 @@
 <img style="width:30px;height:30px;float: left;" src="{{(af.auth | async).auth.photoURL}}"/>
 <p>&nbsp;&nbsp;&nbsp;Logged in as {{ (af.auth | async).auth.displayName }}</p>
 	<div id="theatre"> 
-	      <button *ngFor="let item of items | async" [attr.id]="item.$key" class="seat" #seat (click)="updateItem(item, $event, this)">
+	      <span *ngFor="let item of items | async" [attr.id]="item.$key" class="seat" #seat (click)="updateItem(item, $event, this)">
 	      <div *ngIf="!isSomeoneElse(item)">
-	      	<div *ngIf="isUIDNull(item)">N</div>
-	      	<div *ngIf="!isUIDNull(item)">M</div>
+	      	<div class="seat" *ngIf="isUIDNull(item)" style="background-color: red" >N</div>
+	      	<div class="seat" *ngIf="!isUIDNull(item)" style="background-color: yellow" >M</div>
 	      </div>
-	      <div *ngIf="isSomeoneElse(item)">F</div>
-	      </button>
+	      <div class="seat" style="background-color: lightblue" *ngIf="isSomeoneElse(item)">F</div>
+	      </span>
 	</div>
 </div>
 

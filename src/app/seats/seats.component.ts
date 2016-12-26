@@ -13,6 +13,7 @@ export class SeatsComponent implements OnInit {
 projection: Projection;
 errorMessage: string;
 rows;
+columns;
 items;    
 user;
 showStyle;
